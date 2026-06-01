@@ -4,7 +4,7 @@ import requests
 import os
 
 DOMO_WEBHOOK_URL = os.environ["DOMO_WEBHOOK_URL"]  # set as GitHub secret
-CSV_FILE = "your_dataset.csv"  # path to your CSV in repo
+CSV_FILE = "2015_16_Districtwise.csv"  # path to your CSV in repo
 
 def csv_to_json(filepath):
     rows = []
