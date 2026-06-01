@@ -1,0 +1,30 @@
+name: Send CSV to Domo
+
+on:
+  push:
+    paths:
+      - "your_dataset.csv"       # trigger only when CSV changes
+  schedule:
+    - cron: "0 6 * * *"          # or run daily at 6 AM UTC
+  workflow_dispatch:              # allow manual trigger
+
+jobs:
+  send-to-domo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Send CSV to Domo Webhook
+        env:
+          DOMO_WEBHOOK_URL: ${{ secrets.DOMO_WEBHOOK_URL }}
+        run: python send_to_domo.py
