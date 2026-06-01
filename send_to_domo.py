@@ -27,4 +27,4 @@ def send_in_chunks(data, chunk_size=500):
             raise Exception(f"Failed: {response.text}")
 
 data = csv_to_json(CSV_FILE)
-send_in_chunks(data, chunk_size=500)
+send_in_chunks(data, chunk_size=100)
