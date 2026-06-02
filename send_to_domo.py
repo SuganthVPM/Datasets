@@ -29,8 +29,9 @@ def send_in_chunks(data, chunk_size=10):  # Reduced default to 10
             DOMO_WEBHOOK_URL,
             headers={"Content-Type": "application/json"},
             data=json_payload
+            timeout=30
         )
-        
+        print(f"Status: {response.status_code} - {response.text}")  # change this line
         if response.status_code not in (200, 204):
             raise Exception(f"Failed at chunk {i//chunk_size + 1}: Status {response.status_code} - {response.text}")
         
