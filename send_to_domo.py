@@ -28,7 +28,7 @@ def send_in_chunks(data, chunk_size=10):  # Reduced default to 10
         response = requests.post(
             DOMO_WEBHOOK_URL,
             headers={"Content-Type": "application/json"},
-            data=json_payload
+            data=json_payload,
             timeout=30
         )
         print(f"Status: {response.status_code} - {response.text}")  # change this line
